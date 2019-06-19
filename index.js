@@ -1,23 +1,22 @@
-const { parse, AST } = require('json-ast');
+const format = require('xml-formatter');
 
 const $paste = document.getElementById('paste');
-const $result = document.getElementById('json');
+const $result = document.getElementById('xml');
 const $instructions = document.getElementById('instructions');
 const $error = document.getElementById('error');
 
 const ERROR_SYMBOL = Symbol();
 
-function formatJSON(json_string) {
+function formatXML(xml_string) {
   try {
-    const ast = parse(json_string, { junker: true });
-    const parsed = AST.JsonNode.toJSON(ast);
-    return JSON.stringify(parsed, null, 2);
+    const formattedXml = format(xml_string);
+    return formattedXml;
   } catch (e) {
     return ERROR_SYMBOL;
   }
 }
 
-$paste.onpaste = (event) => {
+$paste.onpaste = event => {
   let raw_paste;
 
   if (window.clipboardData && window.clipboardData.getData) {
@@ -26,7 +25,7 @@ $paste.onpaste = (event) => {
     raw_paste = event.clipboardData.getData('text/plain');
   }
 
-  const result = formatJSON(raw_paste);
+  const result = formatXML(raw_paste);
 
   if (result === ERROR_SYMBOL) {
     $result.style.display = 'none';
@@ -34,7 +33,7 @@ $paste.onpaste = (event) => {
     $error.style.display = 'block';
   } else {
     $result.style.display = 'block';
-    $result.innerHTML = result;
+    $result.innerText = result;
     $instructions.style.display = 'none';
     $error.style.display = 'none';
   }

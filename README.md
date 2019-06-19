@@ -1,11 +1,12 @@
-# NiceJSON.com
-#### a web-based, privacy-focused JSON pretty printer
+# NiceXML
+
+#### a web-based, privacy-focused XML pretty printer
 
 ## Development
 
 ```
-$ git clone git@github.com:crabl/nicejson.com.git
-$ cd nicejson.com
+$ git clone git@github.com:kurtztech/nicexml.git
+$ cd nicexml
 $ npm install
 $ npm run dev
 ```
@@ -18,8 +19,4 @@ $ npm run build
 
 ## To Do List
 
-- [x] more forgiving json parser
-- [x] privacy policy
-- [x] bundle with parcel
-- [x] open-source it on github
-- [ ] ssl, i guess
+- [ ] collapsible tags

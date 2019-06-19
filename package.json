@@ -1,7 +1,7 @@
 {
-  "name": "nicejson.com",
+  "name": "nicexml",
   "version": "1.0.0",
-  "description": "a web-based, privacy-focused JSON pretty printer",
+  "description": "a web-based, privacy-focused XML pretty printer",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,11 +9,11 @@
     "build": "parcel build --no-source-maps index.html"
   },
   "keywords": [],
-  "author": "Chris Rabl <chris@crabl.net>",
+  "author": "Sam Kurtz <sam@kurtztech.com>",
   "license": "MIT",
   "dependencies": {
-    "json-ast": "^2.1.7",
-    "parcel-bundler": "^1.8.1"
+    "parcel-bundler": "^1.8.1",
+    "xml-formatter": "^1.1.0"
   },
   "devDependencies": {
     "cssnano": "^4.1.7"
