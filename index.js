@@ -9,7 +9,7 @@ const ERROR_SYMBOL = Symbol();
 
 function formatXML(xml_string) {
   try {
-    const formattedXml = format(xml_string);
+    const formattedXml = format(xml_string, { collapseContent: true });
     return formattedXml;
   } catch (e) {
     return ERROR_SYMBOL;
