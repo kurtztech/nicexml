@@ -12,6 +12,7 @@
   "author": "Sam Kurtz <sam@kurtztech.com>",
   "license": "MIT",
   "dependencies": {
+    "fast-xml-parser": "^3.12.16",
     "parcel-bundler": "^1.8.1",
     "xml-formatter": "^1.1.0"
   },

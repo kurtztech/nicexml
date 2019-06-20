@@ -1,4 +1,5 @@
 const format = require('xml-formatter');
+const parser = require('fast-xml-parser');
 
 const $paste = document.getElementById('paste');
 const $result = document.getElementById('xml');
@@ -7,9 +8,11 @@ const $error = document.getElementById('error');
 
 const ERROR_SYMBOL = Symbol();
 
-function formatXML(xml_string) {
+function formatXML(xmlString) {
   try {
-    const formattedXml = format(xml_string, { collapseContent: true });
+    const valid = parser.validate(xmlString);
+    if (valid !== true) throw Error();
+    const formattedXml = format(xmlString, { collapseContent: true });
     return formattedXml;
   } catch (e) {
     return ERROR_SYMBOL;
@@ -17,15 +20,15 @@ function formatXML(xml_string) {
 }
 
 $paste.onpaste = event => {
-  let raw_paste;
+  let rawPaste;
 
   if (window.clipboardData && window.clipboardData.getData) {
-    raw_paste = window.clipboardData.getData('Text');
+    rawPaste = window.clipboardData.getData('Text');
   } else if (event.clipboardData && event.clipboardData.getData) {
-    raw_paste = event.clipboardData.getData('text/plain');
+    rawPaste = event.clipboardData.getData('text/plain');
   }
 
-  const result = formatXML(raw_paste);
+  const result = formatXML(rawPaste);
 
   if (result === ERROR_SYMBOL) {
     $result.style.display = 'none';
